@@ -5,7 +5,9 @@
  * @src: Pointer to the source string
  *
  * Return: Pointer to the resulting string dest
+ *
  */
+
 char *_strcat(char *dest, char *src)
 {
 	char *ptr = dest;
