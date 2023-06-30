@@ -1,39 +1,24 @@
 #include "main.h"
 
 /**
- * _putchar - Custom putchar function
- * @c: The character to be printed
- *
- * Return: On success, 1. On error, -1.
+ * print_number - print numbers chars
+ * @n: integer params
+ * Return: 0
  */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
 
-/**
- * print_number - Prints an integer
- * @n: The integer to be printed
- */
 void print_number(int n)
 {
-	unsigned int num;
+	unsigned int n1;
 
+	n1 = n;
 	if (n < 0)
 	{
 		_putchar('-');
-		num = -n;
+		n1 = -n;
 	}
-	else
+	if (n1 / 10 != 0)
 	{
-		num = n;
+		print_number(n1 / 10);
 	}
-
-	if (num / 10 != 0)
-	{
-		print_number(num / 10);
-	}
-
-	_putchar((num % 10) + '0');
+	_putchar((n1 % 10) + '0');
 }
-
