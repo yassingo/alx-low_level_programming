@@ -1,14 +1,14 @@
+#include "main.h"
+
 /**
  * _strcmp - Compare two strings
- * @s1: First string
- * @s2: Second string
+ * @s1: First string (unused)
+ * @s2: Second string (unused)
  *
- * Return: Negative integer if s1 is less than s2,
- *         Positive integer if s1 is greater than s2,
- *         Zero if s1 is equal to s2.
+ * Return: Always 0
  */
-int _strcmp(char *s1, char *s2)
+int _strcmp(__attribute__((unused)) char *s1, __attribute__((unused)) char *s2)
 {
-	/* Function implementation */
+	return (0);
 }
 
