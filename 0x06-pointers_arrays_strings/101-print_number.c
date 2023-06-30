@@ -1,20 +1,33 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * _putchar - Writes a character to the standard output (stdout)
- * @c: The character to be written
- *
- * Return: On success 1.
- * On error, -1 is returned and errno is set appropriately.
- */
-int _putchar(char c);
-
-/**
- * print_number - Prints an integer using only _putchar
+ * print_number - Prints an integer using only _putchar function
  * @n: The integer to be printed
  */
 void print_number(int n)
 {
-  /* Your code here */
+	int divisor = 1;
+	int temp;
+
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
+
+	temp = n;
+
+	while (temp > 9)
+	{
+		divisor *= 10;
+		temp /= 10;
+	}
+
+	while (divisor >= 1)
+	{
+		_putchar((n / divisor) + '0');
+		n %= divisor;
+		divisor /= 10;
+	}
 }
 
