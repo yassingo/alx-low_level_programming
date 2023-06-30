@@ -1,10 +1,10 @@
-#include <main.h>
+#include "main.h"
 
 /**
- * _strncpy - Copies a string
- * @dest: Pointer to the destination string
- * @src: Pointer to the source string
- * @n: Maximum number of characters to be copied
+ * _strncpy - Copies a string up to n bytes
+ * @dest: Destination string
+ * @src: Source string
+ * @n: Maximum number of bytes to be copied
  *
  * Return: Pointer to the resulting string dest
  */
@@ -18,6 +18,6 @@ char *_strncpy(char *dest, char *src, int n)
 	for (; i < n; i++)
 		dest[i] = '\0';
 
-	return dest;
+	return (dest);
 }
 
