@@ -1,0 +1,2 @@
+learning pointers arrays strings
+
