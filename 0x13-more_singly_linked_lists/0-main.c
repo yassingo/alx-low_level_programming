@@ -1,33 +1,34 @@
-#include <stdio.h>
-#include <stddef.h>  /* Add this line to include the 'stddef.h' header */
-
-/* This program demonstrates the use of linked lists in C */
-
-/* Data structure for a singly-linked list node */
-typedef struct listint_s {
-	    int n;
-	        struct listint_s *next;
-} listint_t;
-
-/* Function to print all elements of a linked list */
-size_t print_listint(const listint_t *h);
+#include "lists.h"
 
 int main(void)
 {
-	    listint_t *head;
-	        listint_t node1, node2, node3;
+    listint_t *head = NULL;
+    listint_t *new_node = NULL;
 
-		    node1.n = 1;
-		        node1.next = &node2;
-			    node2.n = 2;
-			        node2.next = &node3;
-				    node3.n = 3;
-				        node3.next = NULL;
+    new_node = malloc(sizeof(listint_t));
+    if (new_node == NULL)
+    {
+        printf("Error: Can't allocate memory for new node\n");
+        return (1);
+    }
 
-					    head = &node1;
+    new_node->n = 9;
+    new_node->next = head;
+    head = new_node;
 
-					        print_listint(head);
+    new_node = malloc(sizeof(listint_t));
+    if (new_node == NULL)
+    {
+        printf("Error: Can't allocate memory for new node\n");
+        return (1);
+    }
 
-						    return 0;
+    new_node->n = 8;
+    new_node->next = head;
+    head = new_node;
+
+    print_listint(head);
+
+    return (0);
 }
 
