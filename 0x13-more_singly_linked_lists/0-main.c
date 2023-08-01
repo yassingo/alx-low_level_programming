@@ -1,31 +1,17 @@
+#include <stdio.h>
 #include "lists.h"
 
 int main(void)
 {
-    listint_t *head = NULL;
-    listint_t *new_node = NULL;
+    listint_t node1, node2;
+    listint_t *head;
 
-    new_node = malloc(sizeof(listint_t));
-    if (new_node == NULL)
-    {
-        printf("Error: Can't allocate memory for new node\n");
-        return (1);
-    }
+    node1.n = 9;
+    node1.next = &node2;
+    node2.n = 8;
+    node2.next = NULL;
 
-    new_node->n = 9;
-    new_node->next = head;
-    head = new_node;
-
-    new_node = malloc(sizeof(listint_t));
-    if (new_node == NULL)
-    {
-        printf("Error: Can't allocate memory for new node\n");
-        return (1);
-    }
-
-    new_node->n = 8;
-    new_node->next = head;
-    head = new_node;
+    head = &node1;
 
     print_listint(head);
 
