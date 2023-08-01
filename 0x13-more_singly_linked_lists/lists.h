@@ -9,12 +9,12 @@
  * @next: points to the next node
  *
  * Description: singly linked list node structure
- * for ALX project
+ * for integer values
  */
 typedef struct listint_s
 {
-    int n;
-    struct listint_s *next;
+	int n;
+	struct listint_s *next;
 } listint_t;
 
 /* Function prototypes */
@@ -31,4 +31,3 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
 
 #endif /* LISTS_H */
-
