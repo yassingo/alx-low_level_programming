@@ -1,4 +1,4 @@
-nclude <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "lists.h"
 
@@ -11,7 +11,7 @@ int main(void)
     /* Rest of the code remains the same */
 
     (void)head;
-    (void)node; // To silence the unused variable warnings
+    (void)node; /* To silence the unused variable warnings */
 
     return (0);
 }
