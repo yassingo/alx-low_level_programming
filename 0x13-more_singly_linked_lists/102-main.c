@@ -1,45 +1,60 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include "lists.h"
+#include <stdlib.h>
+#include "102-free_listint_safe.h"
 
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
+listint_t *add_nodeint(listint_t **head, int n);
+
+/* create_listint_safe - Creates a linked list (for testing purposes) */
+listint_t *create_listint_safe(void)
+{
+    listint_t *head;
+    listint_t *new_node;
+
+    int values[] = {0, 1, 2, 3, 4, 98, 402, 1024};
+    size_t num_nodes = sizeof(values) / sizeof(values[0]);
+    size_t i;
+
+    head = NULL;
+
+    for (i = 0; i < num_nodes; i++)
+    {
+        new_node = add_nodeint(&head, values[i]);
+        if (new_node == NULL)
+        {
+            free_listint_safe(&head); // If memory allocation fails, free previously allocated memory
+            return (NULL);
+        }
+    }
+
+    /* Create a loop for testing purposes */
+    if (head != NULL)
+    {
+        listint_t *last_node = head;
+        while (last_node->next != NULL)
+            last_node = last_node->next;
+        last_node->next = head; // Make the last node point back to the head to create a loop
+    }
+
+    return (head);
+}
+
 int main(void)
 {
     listint_t *head;
-    listint_t *head2;
-    listint_t *node;
+    size_t n;
 
-    head2 = NULL;
-    add_nodeint(&head2, 0);
-    add_nodeint(&head2, 1);
-    add_nodeint(&head2, 2);
-    add_nodeint(&head2, 3);
-    add_nodeint(&head2, 4);
-    add_nodeint(&head2, 98);
-    add_nodeint(&head2, 402);
-    add_nodeint(&head2, 1024);
-    print_listint_safe(head2);
+    head = create_listint_safe();
+    if (head == NULL)
+    {
+        fprintf(stderr, "Failed to create a linked list\n");
+        return (EXIT_FAILURE);
+    }
 
-    head = NULL;
-    node = add_nodeint(&head, 0);
-    add_nodeint(&head, 1);
-    add_nodeint(&head, 2);
-    add_nodeint(&head, 3);
-    add_nodeint(&head, 4);
-    node->next = add_nodeint(&head, 98);
-    add_nodeint(&head, 402);
-    add_nodeint(&head, 1024);
-    print_listint_safe(head);
+    n = print_listint_safe(head);
+    printf("-> %lu elements\n", n);
 
-    free_listint_safe(&head2);
     free_listint_safe(&head);
 
-    printf("%p, %p\n", (void *)head2, (void *)head);
-
-    return (0);
+    return (EXIT_SUCCESS);
 }
 
