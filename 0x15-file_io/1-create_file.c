@@ -1,4 +1,4 @@
-nclude "main.h"
+#include "main.h"
 /**
  * create_file - function that creates a file.
  * @filename: pointer to the name of the file to create.
