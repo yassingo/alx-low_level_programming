@@ -5,20 +5,20 @@
 #include "main.h"
 
 /**
- * create_file - Creates a file with specified permissions and writes text.
- * @filename: The name of the created file.
- * @text_content: The NULL-terminated string to write to the file.
+ * append_text_to_file - Appends text at the end of a file.
+ * @filename: The name of the file.
+ * @text_content: The NULL-terminated string to append to the file.
  *
- * Return: 1 on success, -1 on no success.
+ * Return: 1 on success, -1 on failure.
  */
-int create_file(const char *filename, char *text_content)
+int append_text_to_file(const char *filename, char *text_content)
 {
 	int fd, result, i;
 
 	if (filename == NULL)
 		return (-1);
 
-	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	fd = open(filename, O_WRONLY | O_APPEND);
 	if (fd == -1)
 		return (-1);
 
@@ -38,3 +38,4 @@ int create_file(const char *filename, char *text_content)
 	close(fd);
 	return (1);
 }
+
